@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abdullah Zare | Computer Engineering Student</title>
+  <meta name="description" content="Abdullah Zare is a Computer Engineering student interested in technology, programming, and building useful digital experiences.">
+  <meta name="theme-color" content="#090c13">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abdullah Zare | Computer Engineering Student">
+  <meta property="og:description" content="Personal portfolio of Abdullah Zare, a Computer Engineering student.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fa_IR">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Icon sprite: add new <symbol> entries here for future social links -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.2 18.6 20c-.25 1.1-.9 1.38-1.82.86l-5-3.7-2.42 2.33c-.27.27-.49.49-1 .49l.36-5.1 9.28-8.38c.4-.36-.09-.56-.63-.2L5.9 13.5l-4.94-1.54c-1.07-.34-1.1-1.07.22-1.59L20.5 2.9c.9-.33 1.67.2 1.4 1.3Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 8 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" data-i18n="brand">Abdullah Zare</a>
+
+      <nav class="nav" id="nav" data-i18n-aria="nav.label" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Language">
+          <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" data-lang="fa" lang="fa" aria-pressed="false">FA</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="menu.open" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <span class="hero-glyph" id="heroGlyph" aria-hidden="true">AZ</span>
+      <div class="container hero-inner">
+        <p class="hero-role" style="--i:0" data-i18n="hero.role">Computer Engineering Student</p>
+        <h1 id="hero-title" class="hero-title" style="--i:1" data-i18n="hero.name">Abdullah Zare</h1>
+        <p class="hero-text" style="--i:2" data-i18n="hero.intro">I'm Abdullah Zare, a Computer Engineering student interested in technology, programming, and building useful digital experiences.</p>
+        <div class="hero-actions" style="--i:3">
+          <a class="btn btn-primary" href="#projects" data-i18n="hero.cta.projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid" data-reveal>
+          <h2 id="about-title" class="section-title" data-i18n="about.title">About Me</h2>
+          <p class="about-text" data-i18n="about.text">I'm Abdullah Zare, a Computer Engineering student focused on learning, improving my technical knowledge, and building my path in the world of technology.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container" data-reveal>
+        <h2 id="projects-title" class="section-title" data-i18n="projects.title">Projects</h2>
+
+        <!-- Shown while the `projects` array in script.js is empty -->
+        <div class="empty-state" id="projectsEmpty">
+          <h3 data-i18n="projects.emptyTitle">Projects Coming Soon</h3>
+          <p data-i18n="projects.emptyText">I'm currently working on building my projects. New projects will be added here soon.</p>
+        </div>
+
+        <!-- Project cards are rendered here from the `projects` array -->
+        <div class="project-grid" id="projectGrid" hidden></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container" data-reveal>
+        <h2 id="contact-title" class="section-title" data-i18n="contact.title">Let's Connect</h2>
+        <p class="section-lead" data-i18n="contact.text">If you'd like to connect with me, you can find me through the platforms below.</p>
+
+        <ul class="contact-list">
+          <li><a class="contact-card" href="https://github.com/abdollahzare" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+            <span class="contact-meta"><span class="contact-label">GitHub</span><bdi class="contact-value">Abdullah Zare</bdi></span>
+          </a></li>
+          <li><a class="contact-card" href="https://instagram.com/i_cant_stay_long" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+            <span class="contact-meta"><span class="contact-label">Instagram</span><bdi class="contact-value">i_cant_stay_long</bdi></span>
+          </a></li>
+          <li><a class="contact-card" href="https://t.me/last_hope_2007" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>
+            <span class="contact-meta"><span class="contact-label">Telegram</span><bdi class="contact-value">@last_hope_2007</bdi></span>
+          </a></li>
+          <li><a class="contact-card" href="mailto:lasthopedevice@gmail.com">
+            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+            <span class="contact-meta"><span class="contact-label" data-i18n="contact.email">Email</span><bdi class="contact-value">lasthopedevice@gmail.com</bdi></span>
+          </a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy">© 2026 Abdullah Zare. All rights reserved.</p>
+      <ul class="footer-social">
+        <li><a href="https://github.com/abdollahzare" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+        <li><a href="https://instagram.com/i_cant_stay_long" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
+        <li><a href="https://t.me/last_hope_2007" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></li>
+        <li><a href="mailto:lasthopedevice@gmail.com" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Reusable project card. Cloned by renderProjects() in script.js -->
+  <template id="projectCardTemplate">
+    <article class="project-card">
+      <img class="project-media" alt="" loading="lazy" hidden>
+      <h3 class="project-title"></h3>
+      <p class="project-desc"></p>
+      <ul class="project-tags"></ul>
+      <a class="project-link" target="_blank" rel="noopener noreferrer" hidden></a>
+    </article>
+  </template>
+</body>
+</html>
