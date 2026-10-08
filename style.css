@@ -214,6 +214,7 @@ html[lang="fa"] .section-title { letter-spacing: 0; }
 
 /* Contact */
 .contact-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.25rem; }
+.contact-list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .contact-card {
   display: flex; align-items: center; gap: 1rem; min-height: 80px; padding: 1.1rem 1.4rem;
   border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface);
