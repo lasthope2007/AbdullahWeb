@@ -2,6 +2,8 @@
    Design tokens
    ========================================================== */
 :root {
+  color-scheme: dark;
+
   --bg: #090c13;
   --bg-elevated: #0f131c;
   --surface: rgba(255, 255, 255, 0.035);
@@ -42,6 +44,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 12px);
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -56,18 +59,30 @@ body {
 }
 
 h1, h2, h3, p, ul { margin: 0; }
+h1, h2 { text-wrap: balance; }
 ul { padding: 0; list-style: none; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+img { display: block; max-width: 100%; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
 }
+/* Skip-link target: focus is moved here, but it is not an interactive control */
+main:focus { outline: none; }
 
 .container { width: min(100% - 2.5rem, var(--container)); margin-inline: auto; }
 .icon { width: 22px; height: 22px; flex-shrink: 0; }
+
+/* Off-screen SVG sprite */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Visually hidden, still available to screen readers */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap;
+}
 
 .skip-link {
   position: fixed; inset-inline-start: 1rem; top: -4rem; z-index: 100;
@@ -94,7 +109,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   box-shadow: var(--shadow-soft);
 }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-.brand { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+
+/* Brand: circular logo mark + name */
+.brand {
+  display: inline-flex; align-items: center; gap: 0.65rem; min-width: 0;
+  border-radius: var(--radius-sm);
+  font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
+}
+.brand-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brand-mark {
+  position: relative; flex-shrink: 0;
+  display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 50%; overflow: hidden;
+  background: var(--bg-elevated); border: 1px solid var(--border-strong);
+  color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0; line-height: 1;
+}
+.brand-mark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Initials stay hidden while the logo works; script.js adds .is-fallback if the image fails to load */
+.brand-initials { display: none; }
+.brand-mark.is-fallback .brand-initials { display: block; }
+.brand-mark.is-fallback img { display: none; }
 
 .nav-list { display: flex; gap: 0.25rem; }
 .nav-list a {
@@ -111,7 +145,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--border-strong); font-size: 0.85rem;
 }
 .lang-switch button {
-  min-width: 36px; min-height: 32px; padding: 0 0.4rem; border-radius: 999px;
+  min-width: 36px; min-height: 36px; padding: 0 0.4rem; border-radius: 999px;
   color: var(--text-muted); font-weight: 600;
   transition: color var(--duration-fast), background var(--duration-fast);
 }
@@ -156,11 +190,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-title {
   font-size: clamp(2.6rem, 9vw, 6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.035em;
 }
-html[lang="fa"] .hero-title { letter-spacing: 0; line-height: 1.25; }
 .hero-text { max-width: 36rem; margin-top: 1.5rem; color: var(--text-muted); font-size: clamp(1.05rem, 2.4vw, 1.2rem); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2.25rem; }
 
+/* Staggered page-load entrance */
 .hero-inner > * { animation: rise var(--duration-slow) var(--ease) both; animation-delay: calc(var(--i, 0) * 110ms); }
+.hero-inner > :nth-child(1) { --i: 0; }
+.hero-inner > :nth-child(2) { --i: 1; }
+.hero-inner > :nth-child(3) { --i: 2; }
+.hero-inner > :nth-child(4) { --i: 3; }
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
 /* Buttons */
@@ -181,7 +219,6 @@ html[lang="fa"] .hero-title { letter-spacing: 0; line-height: 1.25; }
    ========================================================== */
 .section { padding: clamp(4.5rem, 10vw, 8rem) 0; border-top: 1px solid var(--border); }
 .section-title { font-size: clamp(1.7rem, 4.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
-html[lang="fa"] .section-title { letter-spacing: 0; }
 .section-lead { max-width: 38rem; margin-top: 1rem; color: var(--text-muted); }
 
 .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
@@ -205,15 +242,18 @@ html[lang="fa"] .section-title { letter-spacing: 0; }
 }
 .project-card:hover { transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-hover); }
 .project-media { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-sm); }
+.project-media[hidden] { display: none; }
 .project-title { font-size: 1.15rem; font-weight: 600; }
 .project-desc { color: var(--text-muted); font-size: 0.95rem; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .project-tags li { padding: 0.1rem 0.65rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text-muted); font-size: 0.8rem; }
-.project-link { margin-top: auto; color: var(--accent); font-weight: 600; }
+.project-link { margin-top: auto; border-radius: var(--radius-sm); color: var(--accent); font-weight: 600; }
+.project-link[hidden] { display: none; }
 .project-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 /* Contact */
 .contact-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.25rem; }
+/* Odd number of cards: let the last one span the full row */
 .contact-list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .contact-card {
   display: flex; align-items: center; gap: 1rem; min-height: 80px; padding: 1.1rem 1.4rem;
@@ -224,7 +264,8 @@ html[lang="fa"] .section-title { letter-spacing: 0; }
 .contact-card .icon { width: 26px; height: 26px; color: var(--accent); }
 .contact-meta { display: flex; flex-direction: column; min-width: 0; }
 .contact-label { font-weight: 600; }
-.contact-value { color: var(--text-muted); font-size: 0.95rem; overflow-wrap: anywhere; direction: ltr; unicode-bidi: isolate; text-align: start; }
+/* Handles, URLs and e-mail addresses are always Latin/LTR, but should sit on the same side as the label */
+.contact-value { color: var(--text-muted); font-size: 0.95rem; overflow-wrap: anywhere; direction: ltr; unicode-bidi: isolate; text-align: left; }
 html[dir="rtl"] .contact-value { text-align: right; }
 
 /* ==========================================================
@@ -238,10 +279,20 @@ html[dir="rtl"] .contact-value { text-align: right; }
 .footer-social .icon { width: 20px; height: 20px; }
 
 /* ==========================================================
-   Motion helpers
+   Persian (RTL): no negative tracking, it breaks Arabic-script joining
    ========================================================== */
-[data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease); }
-[data-reveal].is-visible { opacity: 1; transform: none; }
+html[lang="fa"] .brand,
+html[lang="fa"] .section-title,
+html[lang="fa"] .hero-glyph { letter-spacing: 0; }
+html[lang="fa"] .hero-title { letter-spacing: 0; line-height: 1.25; }
+
+/* ==========================================================
+   Motion helpers
+   Reveal-on-scroll only hides content when JavaScript is running (html.js),
+   so the page stays fully readable without it.
+   ========================================================== */
+.js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease); }
+.js [data-reveal].is-visible { opacity: 1; transform: none; }
 .lang-fade main, .lang-fade footer { animation: langFade var(--duration) ease; }
 @keyframes langFade { from { opacity: 0.3; } to { opacity: 1; } }
 
@@ -252,6 +303,7 @@ html[dir="rtl"] .contact-value { text-align: right; }
   .menu-toggle { display: block; }
   .nav {
     position: fixed; inset: var(--header-h) 0 auto 0;
+    max-height: calc(100vh - var(--header-h)); max-height: calc(100svh - var(--header-h)); overflow-y: auto;
     padding: 0.75rem 1.25rem 1.25rem;
     background: rgba(9, 12, 19, 0.96);
     -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
@@ -271,8 +323,17 @@ html[dir="rtl"] .contact-value { text-align: right; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 
+/* Very narrow phones: keep logo + name + language switch + menu button on one row */
+@media (max-width: 400px) {
+  .header-inner { gap: 0.5rem; }
+  .header-actions { gap: 0.4rem; }
+  .brand { gap: 0.5rem; font-size: 0.95rem; }
+  .brand-mark { width: 32px; height: 32px; font-size: 0.7rem; }
+  .lang-switch button { min-width: 32px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; }
 }
