@@ -10,7 +10,7 @@
 const translations = {
   en: {
     "meta.title": "Abdullah Zare (عبدالله زارع) | Computer Engineering Student",
-    "meta.description": "Abdullah Zare (عبدالله زارع) is a Computer Engineering student interested in technology, programming, and building useful digital experiences.",
+    "meta.description": "Abdullah Zare (عبدالله زارع), also spelled Abdollah Zare, is a Computer Engineering student interested in technology, programming, and building useful digital experiences.",
     "skip": "Skip to content",
     "brand": "Abdullah Zare",
     "brand.initials": "AZ",
