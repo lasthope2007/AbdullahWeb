@@ -223,6 +223,13 @@ main:focus { outline: none; }
 
 .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
 .about-text { font-size: clamp(1.15rem, 2.6vw, 1.5rem); line-height: 1.7; max-width: 40rem; }
+.about-body { display: grid; gap: 1.5rem; min-width: 0; }
+/* Persian introduction (always Persian, so it carries its own font); not needed when the whole page is already Persian */
+.about-note {
+  max-width: 40rem; padding-inline-start: 1rem; border-inline-start: 2px solid var(--border-strong);
+  color: var(--text-muted); font-family: var(--font-persian); font-size: 1rem; line-height: 1.9;
+}
+html[lang="fa"] .about-note { display: none; }
 
 /* Projects */
 .empty-state {
