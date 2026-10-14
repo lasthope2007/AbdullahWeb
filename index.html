@@ -3,24 +3,79 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abdullah Zare | Computer Engineering Student</title>
-  <meta name="description" content="Abdullah Zare is a Computer Engineering student interested in technology, programming, and building useful digital experiences.">
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- Title / description (script.js swaps these when the language changes) -->
+  <title>Abdullah Zare (عبدالله زارع) | Computer Engineering Student</title>
+  <meta name="description" content="Abdullah Zare (عبدالله زارع) is a Computer Engineering student interested in technology, programming, and building useful digital experiences.">
+  <meta name="author" content="Abdullah Zare">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#090c13">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://abdullahzare.ir/">
+
+  <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Abdullah Zare | Computer Engineering Student">
-  <meta property="og:description" content="Personal portfolio of Abdullah Zare, a Computer Engineering student.">
+  <meta property="og:site_name" content="Abdullah Zare">
+  <meta property="og:url" content="https://abdullahzare.ir/">
+  <meta property="og:title" content="Abdullah Zare (عبدالله زارع) | Computer Engineering Student">
+  <meta property="og:description" content="Abdullah Zare (عبدالله زارع) is a Computer Engineering student interested in technology, programming, and building useful digital experiences.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="fa_IR">
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Abdullah Zare (عبدالله زارع) | Computer Engineering Student">
+  <meta name="twitter:description" content="Abdullah Zare (عبدالله زارع) is a Computer Engineering student interested in technology, programming, and building useful digital experiences.">
+  <!-- Social preview image: uncomment these three lines once assets/images/logo.png exists (square, 512x512 or larger).
+  <meta property="og:image" content="https://abdullahzare.ir/assets/images/logo.png">
+  <meta property="og:image:alt" content="Abdullah Zare logo">
+  <meta name="twitter:image" content="https://abdullahzare.ir/assets/images/logo.png">
+  -->
+
+  <!-- Favicon: add these two files (see README). Until they exist the browser simply shows its default icon. -->
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Structured data. To add the logo later, add:  "image": "https://abdullahzare.ir/assets/images/logo.png"  to the Person entry. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://abdullahzare.ir/#person",
+        "name": "Abdullah Zare",
+        "alternateName": "عبدالله زارع",
+        "url": "https://abdullahzare.ir/",
+        "description": "Computer Engineering student interested in technology, programming, and building useful digital experiences.",
+        "sameAs": [
+          "https://github.com/lasthope2007",
+          "https://www.linkedin.com/in/abdullah-zare-672723442/",
+          "https://instagram.com/i_cant_stay_long",
+          "https://t.me/last_hope_2007"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://abdullahzare.ir/#website",
+        "url": "https://abdullahzare.ir/",
+        "name": "Abdullah Zare",
+        "alternateName": "عبدالله زارع",
+        "inLanguage": ["en", "fa"],
+        "publisher": { "@id": "https://abdullahzare.ir/#person" }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Vazirmatn:wght@400;500;700&amp;display=swap">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Icon sprite: add new <symbol> entries here for future social links -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
     <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
@@ -32,7 +87,15 @@
 
   <header class="site-header" id="header">
     <div class="container header-inner">
-      <a class="brand" href="#home" data-i18n="brand">Abdullah Zare</a>
+      <!-- Logo: put your square logo at assets/images/logo.png. If the file is missing, script.js shows the initials instead.
+           The image is decorative (the brand name sits right next to it), so its alt text is intentionally empty. -->
+      <a class="brand" href="#home">
+        <span class="brand-mark" id="brandMark">
+          <img src="assets/images/logo.png" alt="" width="64" height="64" decoding="async">
+          <span class="brand-initials" aria-hidden="true" data-i18n="brand.initials">AZ</span>
+        </span>
+        <span class="brand-text" data-i18n="brand">Abdullah Zare</span>
+      </a>
 
       <nav class="nav" id="nav" data-i18n-aria="nav.label" aria-label="Main navigation">
         <ul class="nav-list">
@@ -45,9 +108,9 @@
 
       <div class="header-actions">
         <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Language">
-          <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="en" lang="en" aria-label="English (EN)" aria-pressed="true">EN</button>
           <span aria-hidden="true">|</span>
-          <button type="button" data-lang="fa" lang="fa" aria-pressed="false">FA</button>
+          <button type="button" data-lang="fa" lang="fa" aria-label="فارسی (FA)" aria-pressed="false">FA</button>
         </div>
         <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="menu.open" aria-label="Open menu">
           <span></span><span></span><span></span>
@@ -56,14 +119,14 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <span class="hero-glyph" id="heroGlyph" aria-hidden="true">AZ</span>
+      <span class="hero-glyph" aria-hidden="true" data-i18n="hero.glyph">AZ</span>
       <div class="container hero-inner">
-        <p class="hero-role" style="--i:0" data-i18n="hero.role">Computer Engineering Student</p>
-        <h1 id="hero-title" class="hero-title" style="--i:1" data-i18n="hero.name">Abdullah Zare</h1>
-        <p class="hero-text" style="--i:2" data-i18n="hero.intro">I'm Abdullah Zare, a Computer Engineering student interested in technology, programming, and building useful digital experiences.</p>
-        <div class="hero-actions" style="--i:3">
+        <p class="hero-role" data-i18n="hero.role">Computer Engineering Student</p>
+        <h1 id="hero-title" class="hero-title" data-i18n="hero.name">Abdullah Zare</h1>
+        <p class="hero-text" data-i18n="hero.intro">I'm Abdullah Zare, a Computer Engineering student interested in technology, programming, and building useful digital experiences.</p>
+        <div class="hero-actions">
           <a class="btn btn-primary" href="#projects" data-i18n="hero.cta.projects">View Projects</a>
           <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Contact Me</a>
         </div>
@@ -101,23 +164,23 @@
 
         <ul class="contact-list">
           <li><a class="contact-card" href="https://github.com/lasthope2007" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-            <span class="contact-meta"><span class="contact-label">GitHub</span><bdi class="contact-value">lasthope2007</bdi></span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
+            <span class="contact-meta"><span class="contact-label">GitHub</span><bdi class="contact-value">lasthope2007</bdi><span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
           </a></li>
           <li><a class="contact-card" href="https://www.linkedin.com/in/abdullah-zare-672723442/" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
-            <span class="contact-meta"><span class="contact-label">LinkedIn</span><bdi class="contact-value">Abdullah Zare</bdi></span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>
+            <span class="contact-meta"><span class="contact-label">LinkedIn</span><bdi class="contact-value">Abdullah Zare</bdi><span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
           </a></li>
           <li><a class="contact-card" href="https://instagram.com/i_cant_stay_long" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
-            <span class="contact-meta"><span class="contact-label">Instagram</span><bdi class="contact-value">i_cant_stay_long</bdi></span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>
+            <span class="contact-meta"><span class="contact-label">Instagram</span><bdi class="contact-value">i_cant_stay_long</bdi><span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
           </a></li>
           <li><a class="contact-card" href="https://t.me/last_hope_2007" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>
-            <span class="contact-meta"><span class="contact-label">Telegram</span><bdi class="contact-value">@last_hope_2007</bdi></span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-telegram"/></svg>
+            <span class="contact-meta"><span class="contact-label">Telegram</span><bdi class="contact-value">@last_hope_2007</bdi><span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
           </a></li>
           <li><a class="contact-card" href="mailto:lasthopedevice@gmail.com">
-            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>
             <span class="contact-meta"><span class="contact-label" data-i18n="contact.email">Email</span><bdi class="contact-value">lasthopedevice@gmail.com</bdi></span>
           </a></li>
         </ul>
@@ -129,11 +192,11 @@
     <div class="container footer-inner">
       <p data-i18n="footer.copy">© 2026 Abdullah Zare. All rights reserved.</p>
       <ul class="footer-social">
-        <li><a href="https://github.com/lasthope2007" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
-        <li><a href="https://www.linkedin.com/in/abdullah-zare-672723442/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
-        <li><a href="https://instagram.com/i_cant_stay_long" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
-        <li><a href="https://t.me/last_hope_2007" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></li>
-        <li><a href="mailto:lasthopedevice@gmail.com" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+        <li><a href="https://github.com/lasthope2007" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg><span class="sr-only">GitHub <span data-i18n="a11y.newTab">(opens in a new tab)</span></span></a></li>
+        <li><a href="https://www.linkedin.com/in/abdullah-zare-672723442/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg><span class="sr-only">LinkedIn <span data-i18n="a11y.newTab">(opens in a new tab)</span></span></a></li>
+        <li><a href="https://instagram.com/i_cant_stay_long" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg><span class="sr-only">Instagram <span data-i18n="a11y.newTab">(opens in a new tab)</span></span></a></li>
+        <li><a href="https://t.me/last_hope_2007" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-telegram"/></svg><span class="sr-only">Telegram <span data-i18n="a11y.newTab">(opens in a new tab)</span></span></a></li>
+        <li><a href="mailto:lasthopedevice@gmail.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><span class="sr-only" data-i18n="contact.email">Email</span></a></li>
       </ul>
     </div>
   </footer>
