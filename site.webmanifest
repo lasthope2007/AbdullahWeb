@@ -6,5 +6,5 @@
   "display": "standalone",
   "background_color": "#101512",
   "theme_color": "#101512",
-  "icons": [{ "src": "/assets/images/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+  "icons": [{ "src": "/assets/images/abdullah-zare-logo.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }]
 }
