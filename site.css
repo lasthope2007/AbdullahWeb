@@ -130,3 +130,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
  html{scroll-behavior:auto}
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Small circular logo avatar in the top navigation */
+.brand-avatar{display:block;width:42px;height:42px;flex:0 0 42px;object-fit:cover;object-position:center;border-radius:50%;border:1px solid var(--line);background:var(--panel);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent);transition:transform .22s,border-color .22s,box-shadow .22s}
+.brand:hover .brand-avatar{transform:scale(1.06);border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
+.brand{gap:12px}
+@media(max-width:560px){.brand-avatar{width:36px;height:36px;flex-basis:36px}.brand{gap:9px}}
