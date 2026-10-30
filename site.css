@@ -19,3 +19,7 @@
 .subpage-profile{display:block;max-width:790px}
 .subpage-profile>img{display:none}
 @media(max-width:620px){.hero-visual{width:min(83%,330px)}.visual-board{height:360px}.board-orbit-one{width:260px;height:260px}.board-orbit-two{width:185px;height:185px}.board-side-label{font-size:7px;right:15px;top:15px}.board-coordinate{font-size:7px;left:14px;top:15px}.board-index{right:14px;bottom:14px}}
+
+/* Single-column hero: no portrait or logo artwork */
+.hero{grid-template-columns:minmax(0,1fr);}
+.hero-copy{max-width:780px;}
