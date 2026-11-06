@@ -1,0 +1,148 @@
+/* ==========================================================================
+   AZ — Abdullah Zare · Personal Portfolio
+   responsive.css — Breakpoints: 1024px, 860px, 640px
+   ========================================================================== */
+
+/* ---------- ≤ 1024px : tablet landscape ---------- */
+@media (max-width: 1024px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ---------- ≤ 860px : tablet portrait / large phones ---------- */
+@media (max-width: 860px) {
+  :root {
+    --header-h: 64px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+  .menu-btn {
+    display: inline-flex;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-row {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+  .project-index {
+    display: none;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .info-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-latin {
+    text-align: right;
+  }
+}
+
+/* ---------- ≤ 640px : phones ---------- */
+@media (max-width: 640px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .brand-name small {
+    display: none;
+  }
+
+  .article-row {
+    grid-template-columns: 1fr;
+  }
+  .article-row-meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-box {
+    max-width: none;
+  }
+  .result-count {
+    order: 3;
+  }
+
+  .pager {
+    grid-template-columns: 1fr;
+  }
+  .pager .next {
+    border-inline-start: 0;
+    border-top: 1px solid var(--border);
+    padding-inline-start: 0.5rem;
+  }
+  .pager .prev {
+    padding-inline-end: 0.5rem;
+  }
+  .pager .prev {
+    order: 2;
+  }
+
+  .contact-email-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .back-to-top {
+    inset-inline-start: 1rem;
+    bottom: 1rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Print: keep it clean ---------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .back-to-top,
+  .mobile-menu,
+  .filter-bar,
+  .search-box {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Loop در جاوااسکریپت؛ به زبان ساده — نوشتارهای عبدالله زارع</title>
+  <meta name="description" content="چرا جاوااسکریپت با یک نخ، هم‌زمان کارهای زیادی انجام می‌دهد؟ پاسخ در Call Stack، صف‌ها و ترتیب اجراست.">
+  <meta name="author" content="Abdullah Zare">
+  <link rel="canonical" href="https://abdullahzare.ir/writing/articles/js-event-loop.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Event Loop در جاوااسکریپت؛ به زبان ساده — نوشتارهای عبدالله زارع">
+  <meta property="og:description" content="چرا جاوااسکریپت با یک نخ، هم‌زمان کارهای زیادی انجام می‌دهد؟ پاسخ در Call Stack، صف‌ها و ترتیب اجراست.">
+  <meta property="og:url" content="https://abdullahzare.ir/writing/articles/js-event-loop.html">
+  <meta property="og:image" content="https://abdullahzare.ir/assets/logo/az-logo.png">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:site_name" content="عبدالله زارع">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Event Loop در جاوااسکریپت؛ به زبان ساده — نوشتارهای عبدالله زارع">
+  <meta name="twitter:description" content="چرا جاوااسکریپت با یک نخ، هم‌زمان کارهای زیادی انجام می‌دهد؟ پاسخ در Call Stack، صف‌ها و ترتیب اجراست.">
+  <meta name="twitter:image" content="https://abdullahzare.ir/assets/logo/az-logo.png">
+  <!-- Icons -->
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="../../assets/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- Theme: applied before first paint to avoid flash -->
+  <script>(function () { try { var t = localStorage.getItem("az-theme"); if (!t) { t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", t); } catch (e) { } })();</script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Event Loop در جاوااسکریپت؛ به زبان ساده","datePublished":"2026-10-31","inLanguage":"fa","author":{"@type":"Person","name":"Abdullah Zare","url":"https://abdullahzare.ir/"},"mainEntityOfPage":"https://abdullahzare.ir/writing/articles/js-event-loop.html"}</script>
+</head>
+<body data-page="writing">
+  <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../../index.html" aria-label="عبدالله زارع — صفحه‌ی اصلی">
+      <!-- لوگوی AZ دقیقاً همان فایل آپلودشده است — تغییر نکنید -->
+      <img class="brand-logo" src="../../assets/logo/az-logo-small.png" alt="لوگوی AZ عبدالله زارع" width="40" height="40">
+      <span class="brand-name">عبدالله زارع<small>ABDULLAH ZARE</small></span>
+    </a>
+    <nav class="main-nav" aria-label="ناوبری اصلی">
+      <a href="../../index.html">خانه</a>
+<a href="../../projects.html">پروژه‌ها</a>
+<a href="../../writing.html" aria-current="page">نوشتارها</a>
+<a href="../../about.html">درباره</a>
+<a href="../../contact.html">تماس</a>
+
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="تغییر تم روشن و تیره">
+        <span class="icon-sun"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+        <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+      </button>
+      <button class="icon-btn menu-btn" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="باز و بسته کردن منو">
+        <span class="icon-burger"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+        <span class="icon-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="ناوبری موبایل">
+    <a href="../../index.html">خانه</a>
+<a href="../../projects.html">پروژه‌ها</a>
+<a href="../../writing.html" aria-current="page">نوشتارها</a>
+<a href="../../about.html">درباره</a>
+<a href="../../contact.html">تماس</a>
+
+  </nav>
+  <div class="menu-footer">
+    <a class="btn-text" href="https://github.com/lasthope2007" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg> <span class="ltr">github.com/lasthope2007</span>
+    </a>
+    <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="تغییر تم روشن و تیره">
+      <span class="icon-sun"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+    </button>
+  </div>
+</div>
+  <main id="main">
+  <div class="container page-head container-narrow">
+    <nav class="breadcrumb" aria-label="مسیر صفحه"><a href="../../index.html">خانه</a><span class="sep" aria-hidden="true">/</span><a href="../../writing.html">نوشتارها</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Event Loop در جاوااسکریپت؛ به زبان ساده</span></nav>
+    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
+      <span class="tag">جاوااسکریپت</span>
+      <span class="badge-sample">نوشتار نمونه — قابل ویرایش</span>
+    </div>
+    <h1 class="detail-title" style="font-size:clamp(1.7rem,4.5vw,2.6rem)">Event Loop در جاوااسکریپت؛ به زبان ساده</h1>
+    <div class="article-head-meta">
+      <span>۹ آبان ۱۴۰۵</span><span class="dot-sep" aria-hidden="true"></span>
+      <span>3 دقیقه مطالعه</span><span class="dot-sep" aria-hidden="true"></span>
+      <span>عبدالله زارع</span>
+    </div>
+  </div>
+
+  <div class="container container-narrow">
+    <article class="prose detail-section" style="margin-top:1rem">
+      <p>جاوااسکریپت تک‌نخی (single-thread) است؛ یعنی در هر لحظه فقط یک کار را انجام می‌دهد. پس چطور ممکن است هم‌زمان چند تایمر، چند درخواست شبکه و چند تعامل کاربر مدیریت شود؟ جواب در «Event Loop» است.</p>
+<h2>سه بازیگر اصلی</h2>
+<ul>
+<li><b>Call Stack:</b> جایی که توابعِ در حال اجرا روی هم قرار می‌گیرند؛ هر تابع که تمام شد از پشته خارج می‌شود.</li>
+<li><b>Web APIs:</b> تایمرها، رویدادها و درخواست‌های شبکه بیرون از نخ اصلی اجرا می‌شوند و وقتی آماده شدند، callback‌شان در صف قرار می‌گیرد.</li>
+<li><b>صف‌ها:</b> Microtask (مثل Promise) و Macrotask (مثل <code>setTimeout</code>)؛ microtaskها همیشه اول اجرا می‌شوند.</li>
+</ul>
+<h2>یک مثال کلاسیک</h2>
+<pre><code>console.log("1");
+setTimeout(() =&gt; console.log("2"), 0);
+Promise.resolve().then(() =&gt; console.log("3"));
+console.log("4");</code></pre>
+<p>خروجی به‌ترتیب <code>1، 4، 3، 2</code> است. کدهای هم‌زمان اول اجرا می‌شوند، بعد microtask مربوط به Promise، و در آخر تایمر؛ حتی اگر تأخیرش صفر باشد.</p>
+<h2>چرا این موضوع مهم است؟</h2>
+<p>اگر نخ اصلی با کاری سنگین گیر کند، کل صفحه فریز می‌شود. فهمیدن event loop کمک می‌کند کارهای سنگین را بشکنید، از محاسبات طولانی در مسیر رندر پرهیز کنید و رفتار کدهای async را پیش‌بینی کنید.</p>
+    </article>
+
+    <section class="detail-section">
+      <div class="section-head" style="margin-bottom:0.9rem">
+        <h2 class="section-title" style="font-size:1.35rem">نوشتارهای مرتبط</h2>
+      </div>
+      <div class="related-grid">
+        <div class="related-card">
+        <span class="tag tag-muted">بک‌اند</span>
+        <h3><a href="backend-roadmap.html">نقشه‌ی راه یادگیری بک‌اند؛ از صفر تا اولین API</a></h3>
+        <p class="article-meta-line" style="margin-top:0.5rem">۱۶ آبان ۱۴۰۵ · 3 دقیقه مطالعه</p>
+      </div>
+<div class="related-card">
+        <span class="tag tag-muted">هوش مصنوعی و ایجنت‌ها</span>
+        <h3><a href="ai-agents.html">ایجنت‌های هوش مصنوعی؛ از چت‌بات تا ایجنت</a></h3>
+        <p class="article-meta-line" style="margin-top:0.5rem">۲ آبان ۱۴۰۵ · 3 دقیقه مطالعه</p>
+      </div>
+      </div>
+    </section>
+
+    <div class="links-row" style="margin-top:1rem">
+      <a class="btn-text" href="../../writing.html"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> بازگشت به نوشتارها</a>
+    </div>
+  </div>
+</main>
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="brand-logo" src="../../assets/logo/az-logo-small.png" alt="لوگوی AZ عبدالله زارع" width="44" height="44">
+        <p class="footer-tagline">عبدالله زارع؛ دانشجوی مهندسی کامپیوتر و توسعه‌دهنده نرم‌افزار. ساختن، یادگیری و نوشتن درباره‌ی آن‌ها.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">صفحه‌ها</h3>
+        <ul class="footer-list">
+          <li><a href="../../index.html">خانه</a></li><li><a href="../../projects.html">پروژه‌ها</a></li><li><a href="../../writing.html">نوشتارها</a></li><li><a href="../../about.html">درباره</a></li><li><a href="../../contact.html">تماس</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">ارتباط</h3>
+        <ul class="footer-list">
+          <li><a href="mailto:lasthopedevice@gmail.com"><span class="ltr">lasthopedevice@gmail.com</span></a></li>
+          <li><a href="https://github.com/lasthope2007" target="_blank" rel="noopener noreferrer"><span class="ltr">github.com/lasthope2007</span></a></li>
+          <li><span class="muted">اینستاگرام — در انتظار تکمیل</span></li>
+          <li><span class="muted">لینکدین — در انتظار تکمیل</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ۱۴۰۵ عبدالله زارع — همه‌ی حقوق محفوظ است.</span>
+      <span>ساخته‌شده با HTML، CSS و جاوااسکریپتِ خالص · بدون فریم‌ورک <span class="ltr">abdullahzare.ir</span></span>
+    </div>
+  </div>
+</footer>
+  <button class="back-to-top" data-back-to-top aria-label="بازگشت به بالای صفحه"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <script src="../../js/theme.js" defer></script>
+<script src="../../js/main.js" defer></script>
+</body>
+</html>
