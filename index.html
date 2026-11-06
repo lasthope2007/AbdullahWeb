@@ -89,6 +89,46 @@
   <main id="main">
   <!-- ================= HERO ================= -->
   <section class="hero">
+    <div class="hero-whale" aria-hidden="true">
+      <svg class="whale-art" viewBox="0 0 520 300" role="presentation">
+        <defs>
+          <linearGradient id="whale-skin" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#72d9d5"/>
+            <stop offset=".48" stop-color="#168b98"/>
+            <stop offset="1" stop-color="#075064"/>
+          </linearGradient>
+          <linearGradient id="whale-belly" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e4fbf6" stop-opacity=".95"/>
+            <stop offset="1" stop-color="#9edbd8" stop-opacity=".78"/>
+          </linearGradient>
+          <filter id="whale-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+        </defs>
+        <ellipse class="whale-halo" cx="264" cy="151" rx="155" ry="66" fill="#54d8d1" opacity=".16" filter="url(#whale-glow)"/>
+        <g class="whale-body">
+          <path class="whale-tail" d="M91 151 C65 135 47 111 24 105 C31 132 43 148 64 157 C43 168 32 187 27 208 C55 198 77 177 96 158Z" fill="url(#whale-skin)"/>
+          <path d="M78 151 C111 111 177 88 252 88 C321 88 374 110 411 135 C429 147 448 151 473 148 C457 165 438 173 414 171 C379 193 337 207 286 210 C211 215 145 189 103 166Z" fill="url(#whale-skin)"/>
+          <path d="M122 164 C181 189 239 198 292 190 C344 182 381 164 411 151 C396 181 355 204 301 213 C230 225 165 199 122 164Z" fill="url(#whale-belly)" opacity=".9"/>
+          <path d="M265 91 C274 67 291 48 312 39 C308 61 312 79 328 96Z" fill="#117b89"/>
+          <path class="whale-fin" d="M261 184 C283 201 309 217 332 248 C300 245 273 229 249 205Z" fill="#0c6979"/>
+          <path d="M356 116 C372 122 386 132 394 145" fill="none" stroke="#b9f0e8" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+          <circle cx="415" cy="143" r="4.2" fill="#052e3b"/>
+          <circle cx="416.5" cy="141.5" r="1.2" fill="#fff"/>
+          <path d="M435 158 Q447 163 458 158" fill="none" stroke="#064c5b" stroke-width="2.2" stroke-linecap="round" opacity=".65"/>
+          <path d="M147 143 Q163 132 179 135 M190 126 Q204 119 218 121" fill="none" stroke="#b8eee8" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+        </g>
+        <g class="whale-sparkles" fill="#69d9d2">
+          <circle cx="117" cy="73" r="3"/><circle cx="389" cy="70" r="2.5"/><circle cx="454" cy="103" r="2"/>
+          <circle cx="83" cy="111" r="1.8"/><circle cx="350" cy="36" r="2"/>
+        </g>
+      </svg>
+      <svg class="whale-splash" viewBox="0 0 520 120" role="presentation">
+        <path d="M28 91 C96 31 151 35 210 73 C259 105 306 103 352 66 C403 26 455 33 492 77" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".42"/>
+        <path d="M86 101 C143 67 178 69 221 91 C267 115 315 112 359 84 C394 62 429 61 459 83" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".26"/>
+      </svg>
+      <span class="whale-bubble bubble-one"></span><span class="whale-bubble bubble-two"></span><span class="whale-bubble bubble-three"></span>
+    </div>
     <div class="container">
       <p class="hero-status reveal"><span class="dot" aria-hidden="true"></span> در حال یادگیری و ساختن</p>
       <h1 class="hero-title reveal">عبدالله زارع</h1>
