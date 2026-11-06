@@ -667,18 +667,18 @@ html.theme-anim *::after {
 .hero::after {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 .hero::before {
   inset-inline: -8%;
   bottom: -5.5rem;
   height: clamp(11rem, 25vw, 19rem);
-  opacity: 0.72;
+  opacity: 1;
   background:
-    radial-gradient(105% 95% at 50% 100%, rgba(8, 127, 140, 0.13) 0 42%, transparent 42.5%),
-    radial-gradient(92% 88% at 58% 100%, rgba(8, 127, 140, 0.09) 0 43%, transparent 43.5%),
-    radial-gradient(82% 78% at 38% 100%, rgba(8, 127, 140, 0.07) 0 44%, transparent 44.5%);
+    radial-gradient(115% 100% at 50% 100%, rgba(8, 127, 140, 0.24) 0 39%, transparent 39.5%),
+    radial-gradient(105% 95% at 62% 100%, rgba(8, 127, 140, 0.18) 0 42%, transparent 42.5%),
+    radial-gradient(95% 88% at 35% 100%, rgba(8, 127, 140, 0.13) 0 45%, transparent 45.5%);
   transform: rotate(-2deg);
 }
 .hero::after {
@@ -686,11 +686,12 @@ html.theme-anim *::after {
   top: clamp(2rem, 6vw, 5rem);
   width: clamp(8rem, 18vw, 15rem);
   aspect-ratio: 1;
-  border: 1px solid rgba(8, 127, 140, 0.16);
+  border: 1px solid rgba(8, 127, 140, 0.28);
   border-radius: 48% 52% 58% 42%;
+  background: radial-gradient(circle, rgba(8, 127, 140, 0.055), transparent 68%);
   box-shadow:
-    0 0 0 1.1rem rgba(8, 127, 140, 0.025),
-    0 0 0 2.3rem rgba(8, 127, 140, 0.018);
+    0 0 0 1.1rem rgba(8, 127, 140, 0.045),
+    0 0 0 2.3rem rgba(8, 127, 140, 0.03);
   transform: rotate(22deg);
 }
 .hero > .container {
