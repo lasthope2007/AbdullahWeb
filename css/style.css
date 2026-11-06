@@ -634,84 +634,83 @@ html.theme-anim *::after {
 
 
 /* --------------------------------------------------------------------------
-   12. AZ Ocean identity — original marine visual language
-   Shared across every page; keeps the existing content and layout intact.
+   12. AZ Ocean identity — luminous deep-sea signature
    -------------------------------------------------------------------------- */
 :root {
   --accent: #087f8c;
   --accent-strong: #06636e;
-  --accent-soft: rgba(8, 127, 140, 0.09);
-  --ocean-deep: #063b4a;
-  --ocean-mid: #0b7180;
-  --ocean-light: #d8eef0;
+  --accent-soft: rgba(8, 127, 140, 0.10);
+  --ocean-deep: #042d3b;
+  --ocean-mid: #087f8c;
+  --ocean-light: #d8f2f1;
 }
 [data-theme="dark"] {
-  --accent: #65c5cb;
-  --accent-strong: #8adce0;
-  --accent-soft: rgba(101, 197, 203, 0.12);
-  --ocean-deep: #061f2b;
-  --ocean-mid: #0b5362;
+  --accent: #69d4d2;
+  --accent-strong: #8be5df;
+  --accent-soft: rgba(105, 212, 210, 0.14);
+  --ocean-deep: #031b27;
+  --ocean-mid: #0b6671;
   --ocean-light: #123b46;
 }
 
-/* A quiet coastal atmosphere, not a stock-photo or template look. */
+/* The hero artwork is an abstract underwater current, not a generic wave icon. */
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 12% 4%, rgba(73, 174, 184, 0.13), transparent 38%),
-    linear-gradient(180deg, transparent 68%, rgba(8, 127, 140, 0.045));
+    radial-gradient(ellipse at 78% 24%, rgba(30, 166, 172, 0.16), transparent 34%),
+    radial-gradient(ellipse at 8% 88%, rgba(8, 127, 140, 0.10), transparent 42%),
+    linear-gradient(145deg, transparent 35%, rgba(8, 127, 140, 0.045) 100%);
 }
 .hero::before,
 .hero::after {
   content: "";
   position: absolute;
-  z-index: 0;
   pointer-events: none;
 }
 .hero::before {
-  inset-inline: -8%;
-  bottom: -5.5rem;
-  height: clamp(11rem, 25vw, 19rem);
-  opacity: 1;
+  z-index: 0;
+  top: -18%;
+  inset-inline-end: -7%;
+  width: min(74vw, 880px);
+  height: 128%;
+  opacity: .92;
   background:
-    radial-gradient(115% 100% at 50% 100%, rgba(8, 127, 140, 0.24) 0 39%, transparent 39.5%),
-    radial-gradient(105% 95% at 62% 100%, rgba(8, 127, 140, 0.18) 0 42%, transparent 42.5%),
-    radial-gradient(95% 88% at 35% 100%, rgba(8, 127, 140, 0.13) 0 45%, transparent 45.5%);
-  transform: rotate(-2deg);
+    radial-gradient(ellipse at 53% 45%, rgba(94, 226, 219, .28) 0 1.2%, transparent 1.8%),
+    radial-gradient(ellipse at 53% 45%, rgba(19, 151, 160, .16) 0 9%, transparent 35%),
+    repeating-radial-gradient(ellipse at 53% 45%, transparent 0 22px, rgba(14, 139, 150, .18) 23px 24px, transparent 25px 42px),
+    radial-gradient(ellipse at 53% 45%, transparent 0 28%, rgba(5, 100, 117, .12) 28.3% 28.7%, transparent 29% 42%, rgba(5, 100, 117, .10) 42.3% 42.7%, transparent 43%);
+  -webkit-mask-image: radial-gradient(ellipse at 53% 45%, #000 0 42%, rgba(0,0,0,.72) 60%, transparent 78%);
+  mask-image: radial-gradient(ellipse at 53% 45%, #000 0 42%, rgba(0,0,0,.72) 60%, transparent 78%);
+  transform: rotate(-13deg);
 }
 .hero::after {
-  inset-inline-end: clamp(1.5rem, 9vw, 8rem);
-  top: clamp(2rem, 6vw, 5rem);
-  width: clamp(8rem, 18vw, 15rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(8, 127, 140, 0.28);
-  border-radius: 48% 52% 58% 42%;
-  background: radial-gradient(circle, rgba(8, 127, 140, 0.055), transparent 68%);
-  box-shadow:
-    0 0 0 1.1rem rgba(8, 127, 140, 0.045),
-    0 0 0 2.3rem rgba(8, 127, 140, 0.03);
-  transform: rotate(22deg);
+  z-index: 0;
+  inset-inline: -8%;
+  bottom: -8.5rem;
+  height: clamp(12rem, 29vw, 23rem);
+  opacity: .95;
+  background:
+    radial-gradient(115% 115% at 50% 100%, rgba(8, 127, 140, .24) 0 39%, transparent 39.5%),
+    radial-gradient(105% 108% at 63% 100%, rgba(8, 127, 140, .19) 0 43%, transparent 43.5%),
+    radial-gradient(95% 100% at 34% 100%, rgba(8, 127, 140, .14) 0 47%, transparent 47.5%),
+    repeating-radial-gradient(ellipse at 50% 100%, transparent 0 17px, rgba(9, 132, 145, .12) 18px 19px, transparent 20px 34px);
+  transform: rotate(-2deg);
 }
 .hero > .container {
   position: relative;
   z-index: 1;
 }
 .hero-status {
-  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  backdrop-filter: blur(8px);
 }
-.hero-status .dot {
-  background: var(--accent);
-}
-.hero-title {
-  text-wrap: balance;
-}
-.hero-headline em {
-  color: var(--accent);
-}
+.hero-status .dot { background: var(--accent); }
+.hero-title { text-wrap: balance; }
+.hero-headline em { color: var(--accent); }
 .section-rule {
-  border-top-color: color-mix(in srgb, var(--accent) 16%, var(--border));
+  border-top-color: color-mix(in srgb, var(--accent) 18%, var(--border));
 }
 .project-row:hover,
 .article-row:hover {
@@ -720,24 +719,20 @@ html.theme-anim *::after {
 .icon-btn:hover {
   border-color: color-mix(in srgb, var(--accent) 38%, var(--border-strong));
 }
-.btn-primary:hover {
-  background: var(--accent-strong);
-}
-::selection {
-  background: var(--accent);
-  color: #fff;
-}
+.btn-primary:hover { background: var(--accent-strong); }
+::selection { background: var(--accent); color: #fff; }
 
 @media (max-width: 640px) {
-  .hero::after {
-    inset-inline-end: -2.5rem;
-    top: 1.5rem;
-    opacity: 0.55;
+  .hero::before {
+    width: 112vw;
+    height: 76%;
+    top: 0;
+    inset-inline-end: -34%;
+    opacity: .48;
   }
+  .hero::after { opacity: .72; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero::before,
-  .hero::after {
-    transform: none;
-  }
+  .hero::after { transform: none; }
 }
